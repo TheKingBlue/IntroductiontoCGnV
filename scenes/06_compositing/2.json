@@ -1,0 +1,27 @@
+{
+  "ImageWidth": 400,
+  "ImageHeight": 400,
+  "Eye": [400, 300, 500],
+  "LookAt": [0, 0, 0],
+  "VolumeTStep": 0.1,
+  "FieldOfView": 40,
+  "Lights": [
+    {
+      "position": [-400, 600, 500],
+      "color": [1.0, 1.0, 1.0]
+    }
+  ],
+  "Objects": [],
+  "Volumes": [
+    {
+      "min_bounds": [-100, -100, -100],
+      "max_bounds": [100, 100, 100],
+      "volume_data_path": "../volume_data/buckyball/buckyball.dat",
+      "ka": 1.0,
+      "kd": 1.0,
+      "transfer_function": [
+        { "density": 0.00, "color": [0.0, 0.0, 0.0], "opacity": 0 }
+      ]
+    }
+  ]
+}

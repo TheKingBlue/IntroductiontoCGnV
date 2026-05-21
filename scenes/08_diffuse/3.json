@@ -1,0 +1,33 @@
+{
+  "ImageWidth": 400,
+  "ImageHeight": 400,
+  "Eye": [-250, 150, 500],
+  "LookAt": [0, 0, 0],
+  "FieldOfView": 30,
+  "VolumeTrilinear": true,
+  "Lights": [
+    {
+      "position": [400, 600, 500],
+      "color": [1.0, 1.0, 1.0]
+    }
+  ],
+  "Objects": [],
+  "Volumes": [
+    {
+      "min_bounds": [-100, -100, -100],
+      "max_bounds": [100, 100, 100],
+      "volume_data_path": "../volume_data/veiled_chameleon/veiled_chameleon_downscaled_upright.dat",
+      "ka": 1.0,
+      "kd": 1.0,
+      "transfer_function": [
+        { "density": 0.00, "color": [0.0, 0.0, 0.0], "opacity": 0 },
+        { "density": 0.08, "color": [0.0, 0.0, 1.0], "opacity": 0 },
+        { "density": 0.20, "color": [0.0, 0.0, 1.0], "opacity": 0.1 },
+        { "density": 0.35, "color": [0.0, 1.0, 1.0], "opacity": 0.1 },
+        { "density": 0.45, "color": [1.0, 1.0, 0.0], "opacity": 0.1 },
+        { "density": 0.50, "color": [0.7, 0.7, 0.5], "opacity": 0.1 },
+        { "density": 0.95, "color": [0.7, 0.7, 0.5], "opacity": 0.2 }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1277 @@
+{
+    "Eye": [200, 200, 1000],
+    "ImageWidth": 400,
+    "ImageHeight": 400,
+    "LookAt": [200, 200, 0],
+    "FieldOfView": 23,
+    "Volumes": [],
+    "Lights": [
+        {
+            "position": [0, 400, 1000],
+            "color": [1.0, 1.0, 0.0]
+        }
+    ],
+    "Objects": [
+        {
+            "type": "sphere",
+            "position": [
+                266,
+                200,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                233,
+                257.158,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                167,
+                257.158,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                134,
+                200,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                167,
+                142.842,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                233,
+                142.842,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                332,
+                200,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                299,
+                257.158,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                200,
+                200,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                299,
+                142.842,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                266,
+                314.315,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                200,
+                314.315,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                200,
+                200,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                134,
+                314.315,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                101,
+                257.158,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                68,
+                200,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                101,
+                142.842,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                134,
+                85.685,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                200,
+                85.685,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                266,
+                85.685,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                398,
+                200,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                365,
+                257.158,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                365,
+                142.842,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                332,
+                314.315,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                332,
+                85.685,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                299,
+                371.473,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                233,
+                371.473,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                167,
+                371.473,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                101,
+                371.473,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                68,
+                314.315,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                35,
+                257.158,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                2,
+                200,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                35,
+                142.842,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                68,
+                85.685,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                200,
+                85.685,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                101,
+                28.527,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                167,
+                28.527,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                233,
+                28.527,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                299,
+                28.527,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                464,
+                200,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                431,
+                257.158,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                431,
+                142.842,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                398,
+                314.315,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                398,
+                85.685,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                365,
+                371.473,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                365,
+                28.527,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                332,
+                428.631,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                266,
+                428.631,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                200,
+                428.631,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                134,
+                428.631,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                68,
+                428.631,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                35,
+                371.473,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                2,
+                314.315,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                -31,
+                257.158,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                -64,
+                200,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                -31,
+                142.842,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                2,
+                85.685,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                35,
+                28.527,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                68,
+                -28.631,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                134,
+                -28.631,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                200,
+                -28.631,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                266,
+                -28.631,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [
+                332,
+                -28.631,
+                10
+            ],
+            "radius": 50,
+            "material": {
+                "color": [
+                    1,
+                    1,
+                    1
+                ],
+                "ka": 0.1,
+                "kd": 0.5,
+                "ks": 0.2,
+                "n": 128
+            }
+        }
+    ]
+    
+}

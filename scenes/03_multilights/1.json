@@ -1,0 +1,35 @@
+{
+    "Eye": [200, 200, 1000],
+    "ImageWidth": 400,
+    "ImageHeight": 400,
+    "LookAt": [200, 200, 0],
+    "FieldOfView": 23,
+    "Volumes": [],
+    "Lights": [
+        {
+            "position": [-600, -100, 800],
+            "color": [1.0, 0.2, 0.2]
+        },
+        {
+            "position": [200, 1000, 800],
+            "color": [0.2, 1.0, 0.2]
+        },
+        {
+            "position": [1000, -100, 800],
+            "color": [0.2, 0.2, 1.0]
+        }
+    ],
+    "Objects": [
+        {
+            "type": "sphere",
+            "position": [200, 200, 100],
+            "radius": 100,
+            "material":
+            {
+                "color": [0.8,0.6,0.7],
+                "ka": 0.3,
+                "kd": 0.3
+            }
+        }
+    ]
+}

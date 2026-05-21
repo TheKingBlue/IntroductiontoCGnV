@@ -1,0 +1,55 @@
+{
+  "ImageWidth": 400,
+  "ImageHeight": 400,
+  "Shadows": true,
+  "Eye": [200, 200, 2000],
+  "LookAt": [200, 200, 0],
+  "FieldOfView": 12,
+  "VolumeTrilinear": true,
+  "Lights": [
+    {
+      "position": [-600, 600, 1200],
+      "color": [1.0, 1.0, 1.0]
+    }
+  ],
+  "Objects": [
+    {
+      "type": "sphere",
+      "position": [400, -200, -300],
+      "radius": 500,
+      "material":
+      {
+        "color": [1.0, 1.0, 1.0],
+        "ka": 0.3,
+        "kd": 0.7
+      }
+    },
+    {
+      "type": "sphere",
+      "position": [100, 250, 275],
+      "radius": 50,
+      "material":
+      {
+        "color": [1.0, 1.0, 1.0],
+        "ka": 0.3,
+        "kd": 0.7
+      }
+    }
+  ],
+  "Volumes": [
+    {
+      "min_bounds": [150, 100, 50],
+      "max_bounds": [300, 250, 200],
+      "volume_data_path": "../volume_data/buckyball/buckyball.dat",
+      "ka": 1.0,
+      "kd": 1.0,
+      "transfer_function": [
+        { "density": 0.00, "color": [0.0, 0.0, 0.0], "opacity": 0 },
+        { "density": 0.02, "color": [0.0, 0.0, 0.0], "opacity": 0 },
+        { "density": 0.03, "color": [0.0, 0.0, 1.0], "opacity": 0 },
+        { "density": 0.30, "color": [0.0, 1.0, 0.0], "opacity": 0.05 },
+        { "density": 1.00, "color": [1.0, 0.0, 0.0], "opacity": 0.2 }
+      ]
+    }
+  ]
+}

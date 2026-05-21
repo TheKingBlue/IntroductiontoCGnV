@@ -1,0 +1,95 @@
+{
+    "Eye": [200, 200, 1000],
+    "ImageWidth": 400,
+    "ImageHeight": 400,
+    "LookAt": [200, 200, 0],
+    "FieldOfView": 23,
+    "Volumes": [],
+    "Lights": [
+        {
+            "position": [-200, 600, 1500],
+            "color": [1.0, 1.0, 1.0]
+        }
+    ],
+    "Objects": [
+        {
+            "type": "sphere",
+            "position": [100, 250, 50],
+            "radius": 45,
+            "material":
+            {
+                "color": [0.031, 0.31, 0.624],
+                "ka": 0.1,
+                "kd": 0.7,
+                "ks": 0.2,
+                "n": 64
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [150, 200, 50],
+            "radius": 45,
+            "material":
+            {
+                "color": [1.0, 0.835, 0.0],
+                "ka": 0.1,
+                "kd": 0.7,
+                "ks": 0.2,
+                "n": 64
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [200, 250, 50],
+            "radius": 45,
+            "material":
+            {
+                "color": [0.1, 0.1, 0.1],
+                "ka": 0.1,
+                "kd": 0.25,
+                "ks": 0.65,
+                "n": 8
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [250, 200, 50],
+            "radius": 45,
+            "material":
+            {
+                "color": [0.02, 0.655, 0.322],
+                "ka": 0.1,
+                "kd": 0.9,
+                "ks": 0.2,
+                "n": 64
+            }
+        },
+        {
+            "type": "sphere",
+            "position": [300, 250, 50],
+            "radius": 45,
+            "material":
+            {
+                "color": [0.945, 0.106, 0.137],
+                "ka": 0.1,
+                "kd": 0.9,
+                "ks": 0.2,
+                "n": 64
+            }
+        },
+        {
+            "type": "sphere",
+            "comment": "Background Sphere",
+            "position": [200, 180, 1000],
+            "radius": 1000,
+            "material":
+            {
+                "color": [1.0, 1.0, 1.0],
+                "ka": 1.0,
+                "kd": 0.0,
+                "ks": 0.0,
+                "n": 64
+            }
+        }
+    ]
+}

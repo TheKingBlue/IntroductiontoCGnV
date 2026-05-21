@@ -1,0 +1,27 @@
+{
+    "ImageWidth": 400,
+    "ImageHeight": 400,
+    "Eye": [0, 0, 1000],
+    "LookAt": [0, 0, 0],
+    "FieldOfView": 23,
+    "Lights": [
+        {
+            "position": [-200, 600, 1500],
+            "color": [1.0, 1.0, 1.0]
+        }
+    ],
+    "Objects": [
+        {
+            "type": "sphere",
+            "position": [0, 0, 0],
+            "radius": 100,
+            "material":
+            {
+                "color": [1.0, 0.0, 0.0],
+                "ka": 1.0,
+                "kd": 0.0
+            }
+        }
+    ],
+    "Volumes": []
+}

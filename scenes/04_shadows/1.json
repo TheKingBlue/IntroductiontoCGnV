@@ -1,0 +1,40 @@
+{
+    "Eye": [200, 400, 1000],
+    "Shadows": true,
+    "ImageWidth": 400,
+    "ImageHeight": 400,
+    "LookAt": [200, 200, 0],
+    "FieldOfView": 23,
+    "Volumes": [],
+    "Lights": [
+        {
+            "position": [-200, 600, 1500],
+            "color": [0.8, 0.8, 0.8]
+        }
+    ],
+    "Objects": [
+        {
+            "type": "sphere",
+            "position": [150, 250, 300],
+            "radius": 80,
+            "material":
+            {
+                "color": [0.0, 1.0, 0.0],
+                "ka": 0.2,
+                "kd": 0.7
+            }
+        },
+        {
+         "type": "sphere",
+         "comment": "Giant sphere",
+         "position": [200, 180, 1000],
+         "radius": 1000,
+         "material":
+         {
+             "color": [0.9, 0.9, 0.9],
+             "ka": 0.2,
+             "kd": 0.8
+         }
+        }
+    ]
+}
