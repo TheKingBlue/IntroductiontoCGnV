@@ -1,0 +1,3 @@
+/home/MattLinux/Documents/IntroductiontoCGnV/build/CMakeFiles/ray.dir
+/home/MattLinux/Documents/IntroductiontoCGnV/build/CMakeFiles/edit_cache.dir
+/home/MattLinux/Documents/IntroductiontoCGnV/build/CMakeFiles/rebuild_cache.dir
