@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 
+add_definitions(-D_USE_MATH_DEFINES)
+
 # Set name of project
 project(ray)
 
