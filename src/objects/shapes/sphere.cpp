@@ -20,11 +20,17 @@ Sphere::Sphere(Point const &pos, double radius, Vector const &axis, double angle
  */
 optional<Hit> Sphere::intersect(Ray const &ray) {
     // 2.1: Sphere intersection
-    // Placeholder for actual intersection calculation.
-    Vector originToPosition = (position - ray.O).normalized();
-    if (originToPosition.dot(ray.D) < 0.999) return nullopt;
+    double a = ray.D.dot(ray.D);
+    double b = ray.D.dot(2*(ray.O - position));
+    double c = (ray.O - position).dot(ray.O - position) - pow(r, 2);
 
-    double t = 1000;
+    double t0, t1;
+
+    bool tState = Sphere::quadratic(a, b, c, t0, t1);
+
+    if (tState == false) return nullopt;
+
+    double t = t1;
 
     // 2.2.1: Normal calculation
     Vector N(0, 0, 0);
@@ -41,5 +47,23 @@ optional<Hit> Sphere::intersect(Ray const &ray) {
  */
 bool Sphere::quadratic(double a, double b, double c, double &t0, double &t1) {
     // 2.1: Sphere intersection
+    double d = pow(b, 2) - 4 * a * c;
+    
+    // One solution
+    if (d == 0) {
+        double t = -b / (2*a);
+        t0 = t;
+        t1 = t;
+        return true;
+    }
+
+    // Two solutions
+    if (d > 0) {
+        t0 = (-b - sqrt(d)) / (2*a);
+        t1 = (-b + sqrt(d)) / (2*a);
+        return true;
+    }
+
+    // No solution
     return false;
 }
