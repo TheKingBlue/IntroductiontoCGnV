@@ -33,12 +33,6 @@ It can be used as follows:
 
 Specifying an output is optional, and by default an image will be created in the same directory as the source scene file, with the `.json` extension replaced by `.png`.
 
-## Zipping the files
-Before uploading to Themis make sure to zip `CMakeLists` and `src` as follows:
-```
-tar -czvf themis/[submission_name.tar] CMakeLists.txt src
-```
-
 ## Description of the included files
 
 ### Scene files

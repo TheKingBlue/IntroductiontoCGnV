@@ -20,6 +20,9 @@ Sphere::Sphere(Point const &pos, double radius, Vector const &axis, double angle
  */
 optional<Hit> Sphere::intersect(Ray const &ray) {
     // 2.1: Sphere intersection
+    // Ray travels behind the origin towards the object
+    if (ray.D.dot(position - ray.O) < 0) return nullopt;
+
     double a = ray.D.dot(ray.D);
     double b = ray.D.dot(2*(ray.O - position));
     double c = (ray.O - position).dot(ray.O - position) - pow(r, 2);
