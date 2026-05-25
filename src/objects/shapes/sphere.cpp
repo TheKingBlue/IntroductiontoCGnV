@@ -23,6 +23,13 @@ optional<Hit> Sphere::intersect(Ray const &ray) {
     // Ray travels behind the origin towards the object
     if (ray.D.dot(position - ray.O) < 0) return nullopt;
 
+    // We are inside the object and cannot see it
+    if (ray.O.x - position.x <= r and ray.O.y - position.y <= r and ray.O.z - position.z <= r){
+        material.color = Color(0, 0, 0);
+    };
+
+    // Doesnt work. Maybe we should trace the bouncing ray to see if it reaches light?
+
     double a = ray.D.dot(ray.D);
     double b = ray.D.dot(2*(ray.O - position));
     double c = (ray.O - position).dot(ray.O - position) - pow(r, 2);
