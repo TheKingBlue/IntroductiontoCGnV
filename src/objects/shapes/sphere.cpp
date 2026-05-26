@@ -33,10 +33,13 @@ optional<Hit> Sphere::intersect(Ray const &ray) {
 
     if (tState == false) return nullopt;
 
-    double t = t1;
+    double t = t0 < t1 ? t0 : t1;
 
     // 2.2.1: Normal calculation
-    Vector N(0, 0, 0);
+    if (r == 0) return Hit(t, Vector(0,0,0), shared_from_this());
+
+    Point p = ray.O + t * ray.D;
+    Vector N = (p-position) / r;
 
     return Hit(t, N, shared_from_this());
 }

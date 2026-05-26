@@ -97,11 +97,13 @@ Color Scene::shadeHit(Hit const &min_hit, Ray const &ray) const {
     [[maybe_unused]] Vector V = -ray.D;                  // the view vector
 
     // 2.1: Ambient component
-    Color color = material.color * material.ka;
-    
+    Color color = material.color;
+
     // 2.2.1: Normal calculation
+    Color normalMap = (N+1)/2;
 
     // 2.2.2: Diffuse component
+
 
     // 2.3: Multiple lights
 
