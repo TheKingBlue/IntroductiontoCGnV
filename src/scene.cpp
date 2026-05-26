@@ -107,15 +107,17 @@ Color Scene::shadeHit(Hit const &min_hit, Ray const &ray) const {
     Vector L = (light.position - hit).normalized();
     Color id = light.color * material.kd * max(0.0,N.dot(L));
 
+    Color color = material.color * (ia + id);
+
     // 2.3: Multiple lights
 
     // 2.4: Shadows
 
     // 3.6: Sphere and volume integration
 
-    Color i = ia + id;
+    // Combine components
     
-    return material.color * i;
+    return color;
 }
 
 /**
