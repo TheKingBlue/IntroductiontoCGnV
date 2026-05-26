@@ -1213,6 +1213,7 @@ CMakeFiles/ray.dir/src/scene.cpp.o: /home/MattLinux/Documents/IntroductiontoCGnV
   /usr/include/c++/14/bits/stl_iterator.h \
   /usr/include/c++/14/bits/stl_iterator_base_funcs.h \
   /usr/include/c++/14/bits/stl_iterator_base_types.h \
+  /usr/include/c++/14/bits/stl_numeric.h \
   /usr/include/c++/14/bits/stl_pair.h \
   /usr/include/c++/14/bits/stl_raw_storage_iter.h \
   /usr/include/c++/14/bits/stl_relops.h \
@@ -1253,10 +1254,12 @@ CMakeFiles/ray.dir/src/scene.cpp.o: /home/MattLinux/Documents/IntroductiontoCGnV
   /usr/include/c++/14/limits \
   /usr/include/c++/14/memory \
   /usr/include/c++/14/new \
+  /usr/include/c++/14/numeric \
   /usr/include/c++/14/optional \
   /usr/include/c++/14/pstl/execution_defs.h \
   /usr/include/c++/14/pstl/glue_algorithm_defs.h \
   /usr/include/c++/14/pstl/glue_memory_defs.h \
+  /usr/include/c++/14/pstl/glue_numeric_defs.h \
   /usr/include/c++/14/pstl/pstl_config.h \
   /usr/include/c++/14/string \
   /usr/include/c++/14/string_view \

@@ -213,4 +213,6 @@ CMakeFiles/ray.dir/src/scene.cpp.o: \
  /usr/include/c++/14/bits/algorithmfwd.h \
  /usr/include/c++/14/bits/stl_heap.h \
  /usr/include/c++/14/bits/uniform_int_dist.h \
- /usr/include/c++/14/pstl/glue_algorithm_defs.h
+ /usr/include/c++/14/pstl/glue_algorithm_defs.h \
+ /usr/include/c++/14/numeric /usr/include/c++/14/bits/stl_numeric.h \
+ /usr/include/c++/14/pstl/glue_numeric_defs.h

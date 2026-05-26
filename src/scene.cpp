@@ -97,8 +97,15 @@ Color Scene::shadeHit(Hit const &min_hit, Ray const &ray) const {
     [[maybe_unused]] Vector V = -ray.D;                  // the view vector
 
     // 2.1: Ambient component
-    Color color = material.color;
+    // Average all the lights
+    Color lightSum = Color(0.0, 0.0, 0.0);
+    for (int i = 0; i < lights.size(); i++) {
+        lightSum += lights[i].color;
+    };
+    Color ia = lightSum / lights.size();
 
+    Color color = material.color * ia;
+    
     // 2.2.1: Normal calculation
 
     // 2.2.2: Diffuse component
