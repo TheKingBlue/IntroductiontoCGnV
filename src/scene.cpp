@@ -97,13 +97,15 @@ Color Scene::shadeHit(Hit const &min_hit, Ray const &ray) const {
     [[maybe_unused]] Vector V = -ray.D;                  // the view vector
 
     // 2.1: Ambient component
-    Color color = material.color;
+    Color ia = material.color * material.ka;
 
     // 2.2.1: Normal calculation
-    Color normalMap = (N+1)/2;
+    // Color normalMap = (N+1)/2;
 
     // 2.2.2: Diffuse component
-
+    Light light = lights[0];
+    Vector L = (light.position - hit).normalized();
+    Color id = light.color * material.kd * max(0.0,N.dot(L));
 
     // 2.3: Multiple lights
 
@@ -111,7 +113,9 @@ Color Scene::shadeHit(Hit const &min_hit, Ray const &ray) const {
 
     // 3.6: Sphere and volume integration
 
-    return color;
+    Color i = ia + id;
+    
+    return material.color * i;
 }
 
 /**
