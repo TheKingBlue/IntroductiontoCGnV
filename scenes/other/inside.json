@@ -1,0 +1,52 @@
+{
+    "Eye": [200, 200, 1000],
+    "ImageWidth": 400,
+    "ImageHeight": 400,
+    "LookAt": [200, 200, 0],
+    "FieldOfView": 23,
+    "Volumes": [],
+    "Lights": [{
+        "position": [-1000, 600, 500],
+        "color": [1.0, 1.0, 1.0]
+    }],
+    "Objects": [{
+            "type": "sphere",
+            "comment": "Blue Sphere",
+            "position": [90, 320, -100],
+            "radius": 50,
+            "material": {
+                "color": [0.0, 0.0, 1.0],
+                "ka": 0.0,
+                "kd": 0.7,
+                "ks": 0.0,
+                "n": 64
+            }
+        },
+        {
+            "type": "sphere",
+            "comment": "Green Sphere",
+            "position": [210, 270, -300],
+            "radius": 50,
+            "material": {
+                "color": [0.0, 1.0, 0.0],
+                "ka": 0.0,
+                "kd": 0.3,
+                "ks": 0.5,
+                "n": 8
+            }
+        },
+        {
+            "type": "sphere",
+            "comment": "Red Sphere",
+            "position": [210, 170, 1000],
+            "radius": 60,
+            "material": {
+                "color": [1.0, 0.0, 0.0],
+                "ka": 0.2,
+                "kd": 0.7,
+                "ks": 0.8,
+                "n": 32
+            }
+        }
+    ]
+}
