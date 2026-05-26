@@ -20,9 +20,6 @@ Sphere::Sphere(Point const &pos, double radius, Vector const &axis, double angle
  */
 optional<Hit> Sphere::intersect(Ray const &ray) {
     // 2.1: Sphere intersection
-    // Ray travels behind the origin towards the object
-    if (ray.D.dot(position - ray.O) < 0) return nullopt;
-
     double a = ray.D.dot(ray.D);
     double b = ray.D.dot(2*(ray.O - position));
     double c = (ray.O - position).dot(ray.O - position) - pow(r, 2);
@@ -33,7 +30,15 @@ optional<Hit> Sphere::intersect(Ray const &ray) {
 
     if (tState == false) return nullopt;
 
-    double t = t0 < t1 ? t0 : t1;
+    double t ;
+    // Ray travels behind the origin towards the object
+    if (t0 <= 0 && t1 <= 0)
+        return nullopt;
+    // One negative t solution means we are in the sphere
+    else if (t0 <= 0 || t1 <= 0)
+        t = t0 > 0 ? t0 : t1;
+    else
+        t = t0 < t1 ? t0 : t1;
 
     // 2.2.1: Normal calculation
     if (r == 0) return Hit(t, Vector(0,0,0), shared_from_this());
