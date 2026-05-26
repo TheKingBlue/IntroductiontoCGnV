@@ -107,7 +107,10 @@ Color Scene::shadeHit(Hit const &min_hit, Ray const &ray) const {
     Vector L = (light.position - hit).normalized();
     Color id = light.color * material.kd * max(0.0,N.dot(L));
 
-    Color color = material.color * (ia + id);
+    Color i = ia;
+    if (N.dot(L) >= 0) i += id;
+
+    Color color = material.color * i;
 
     // 2.3: Multiple lights
 
