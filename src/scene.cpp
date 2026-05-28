@@ -104,24 +104,14 @@ Color Scene::shadeHit(Hit const &min_hit, Ray const &ray) const {
     if (N.dot(V) < 0) N *= -1;
 
     // 2.2.2: Diffuse component
-    // Light light = lights[0];
-    // Vector L = (light.position - hit).normalized();
-    // Color id = light.color * material.kd * max(0.0,N.dot(L));
-
     // 2.3: Multiple lights
     Color id = Color(0,0,0);
+    Vector L = Vector(0,0,0);
     for (int i = 0; i < lights.size(); i++) {
         Light light = lights[i];
         Vector L = (light.position - hit).normalized();
         id += light.color * material.kd * max(0.0,N.dot(L));
     };
-            
-    // First light manually in 2.2.2
-    // for (int i = 1; i < lights.size(); i++){
-    //     Light light = lights[i];
-    //     Vector L = (light.position - hit).normalized();
-    //     Color id *= light.color * material.kd * max(0.0,N.dot(L));
-    // }
 
     // 2.4: Shadows
 
