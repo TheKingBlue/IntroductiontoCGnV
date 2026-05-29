@@ -107,13 +107,25 @@ Color Scene::shadeHit(Hit const &min_hit, Ray const &ray) const {
     // 2.3: Multiple lights
     Color id = Color(0,0,0);
     Vector L = Vector(0,0,0);
-    for (int i = 0; i < lights.size(); i++) {
+    for (long unsigned int i = 0; i < lights.size(); i++) {
         Light light = lights[i];
         Vector L = (light.position - hit).normalized();
-        id += light.color * material.kd * max(0.0,N.dot(L));
-    };
+        // 2.4: Shadows
+        if (renderShadows) {
+            for (long unsigned int j = 0; j < objects.size(); j++){
+                // Avoid shadow acne
+                hit += epsilon*N;
 
-    // 2.4: Shadows
+                Ray ray = Ray(hit, L);
+
+                if (!objects[j]->intersect(ray)) {
+                    id += light.color * material.kd * max(0.0,N.dot(L));
+                }
+            }
+        } else {
+            id += light.color * material.kd * max(0.0,N.dot(L));
+        }
+    }
 
     // 3.6: Sphere and volume integration
 
