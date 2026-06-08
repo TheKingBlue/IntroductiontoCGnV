@@ -40,7 +40,7 @@
     {
       "min_bounds": [50, 150, 200],
       "max_bounds": [200, 300, 350],
-      "volume_data_path": "../volume_data/bunny/bunny_downscaled_upright.dat",
+      "volume_data_path": "./volume_data/bunny/bunny_downscaled_upright.dat",
       "ka": 1.0,
       "kd": 1.0,
       "transfer_function": [

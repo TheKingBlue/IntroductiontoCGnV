@@ -15,7 +15,7 @@
     {
       "min_bounds": [-100, -100, -100],
       "max_bounds": [100, 100, 100],
-      "volume_data_path": "../volume_data/buckyball/buckyball.dat",
+      "volume_data_path": "./volume_data/buckyball/buckyball.dat",
       "ka": 1.0,
       "kd": 1.0,
       "transfer_function": [
