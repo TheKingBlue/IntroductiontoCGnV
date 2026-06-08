@@ -31,8 +31,34 @@ Volume::Volume(Point const &aa, Point const &bb, DensityField data, TransferFunc
  */
 optional<Segment> Volume::intersect(Ray const &ray) {
     // 3.1: Intersecting the volume domain
-    double const tNear = 100;
-    double const tFar = 1000;
+    double const tAAx = (aa.x - ray.O.x) / ray.D.x;
+    double const tAAy = (aa.y - ray.O.y) / ray.D.y;
+    double const tAAz = (aa.z - ray.O.z) / ray.D.z;
+
+    double const tBBx = (bb.x - ray.O.x) / ray.D.x;
+    double const tBBy = (bb.y - ray.O.y) / ray.D.y;
+    double const tBBz = (bb.z - ray.O.z) / ray.D.z;
+
+    double const tNearx = min(tAAx, tBBx);
+    double const tNeary = min(tAAy, tBBy);
+    double const tNearz = min(tAAz, tBBz);
+
+    double const tFarx = max(tAAx, tBBx);
+    double const tFary = max(tAAy, tBBy);
+    double const tFarz = max(tAAz, tBBz);
+
+    double tNear = max({tNearx, tNeary, tNearz});
+    double tFar = min({tFarx, tFary, tFarz});
+
+    // No intersection
+    if (tNear > tFar) 
+        return nullopt;
+    // Object is behind the camera
+    if (tNear < 0 && tFar < 0)
+        return nullopt;
+    // Clamp tNear to zero
+    if (tNear < 0)
+        tNear = 0;
 
     return Segment(tNear, tFar, shared_from_this());
 }

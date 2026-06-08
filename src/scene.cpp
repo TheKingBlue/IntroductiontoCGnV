@@ -63,15 +63,28 @@ Color Scene::shadePixel(unsigned px, unsigned py, unsigned w, unsigned h) const 
  * @return The color of the ray, in the range [0, 1].
  */
 Color Scene::trace(Ray const &ray) const {
-    Color color;
-
     optional<Hit> objectHit = intersectObjects(ray);
+    vector<Segment> volumeHit = intersectVolumes(ray);
+   
+    // If both an abject and a volume were hit, only return the closest color
+    if (objectHit && volumeHit.size() > 0){
+        if (objectHit.value().t < volumeHit[0].t1)
+            return shadeHit(objectHit.value(), ray).clamp();
 
-    if (objectHit)
-        color = shadeHit(objectHit.value(), ray);
+        if (objectHit.value().t > volumeHit[0].t1)
+            return shadeSegment(volumeHit[0], ray).first.clamp();
+    }
 
-    color.clamp();
-    return color;
+    // Only object was hit
+    else if (objectHit)
+        return shadeHit(objectHit.value(), ray).clamp();
+
+    // Only volume was hit
+    else if (volumeHit.size() > 0)
+        return shadeSegment(volumeHit[0], ray).first;
+
+    // Hit nothing
+    return Color(0,0,0);
 }
 
 /**
