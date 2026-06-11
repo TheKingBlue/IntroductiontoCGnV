@@ -1,8 +1,7 @@
 #include "densityfield.h"
 
-#include "../datraw/datraw.h"
+#include "../datraw/datraw.h" // IWYU pragma: keep
 
-#include <algorithm>
 #include <cmath>
 #include <filesystem>
 
@@ -49,7 +48,16 @@ double DensityField::index(unsigned x, unsigned y, unsigned z) const {
  */
 double DensityField::nearestNeighbor(double xPercent, double yPercent, double zPercent) const {
     // 3.3: Sampling the actual data
-    return index(0, 0, 0);
+    unsigned int x = round(xPercent * width);
+    unsigned int y = round(yPercent * height);
+    unsigned int z = round(zPercent * depth);
+
+    // Edge cases
+    if (x == width) x -= 1;
+    if (y == height) y -= 1;
+    if (z == depth) z -= 1;
+    
+    return index(x, y, z);;
 }
 
 /**
@@ -58,7 +66,46 @@ double DensityField::nearestNeighbor(double xPercent, double yPercent, double zP
  */
 double DensityField::trilinear(double xPercent, double yPercent, double zPercent) const {
     // 3.3: Sampling the actual data
-    return index(0, 0, 0);
+    double x = xPercent * width;
+    double y = yPercent * height;
+    double z = zPercent * depth;
+
+    unsigned int xLow = floor(x);
+    unsigned int yLow = floor(y);
+    unsigned int zLow = floor(z);
+    unsigned int xHigh = ceil(x);
+    unsigned int yHigh = ceil(y);
+    unsigned int zHigh = ceil(z);
+
+    // Edge cases
+    if (xHigh == width) xHigh -= 2;
+    if (yHigh == height) yHigh -= 2;
+    if (zHigh == depth) zHigh -= 2;
+
+    double xD = (x - xLow)/(xHigh - xLow);
+    double yD = (y - yLow)/(yHigh - yLow);
+    double zD = (z - zLow)/(zHigh - zLow);
+
+    double c000 = index(xLow,yLow,zLow);
+    double c100 = index(xHigh,yLow,zLow);
+    double c001 = index(xLow,yLow,zHigh);
+    double c101 = index(xHigh,yLow,zHigh);
+    double c010 = index(xLow,yHigh,zLow);
+    double c110 = index(xHigh,yHigh,zLow);
+    double c011 = index(xLow,yHigh,zHigh);
+    double c111 = index(xHigh,yHigh,zHigh);
+
+    double c00 = c000 * (1-xD) + c100 * xD;
+    double c01 = c001 * (1-xD) + c101 * xD;
+    double c10 = c010 * (1-xD) + c110 * xD;
+    double c11 = c011 * (1-xD) + c111 * xD;
+
+    double c0 = c00 * (1-yD) + c10 * yD;
+    double c1 = c01 * (1-yD) + c11 * yD;
+
+    double c = c0 * (1-zD) + c1 * zD;
+
+    return c;
 }
 
 /**

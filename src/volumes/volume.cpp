@@ -72,8 +72,13 @@ optional<Segment> Volume::intersect(Ray const &ray) {
  */
 Sample Volume::sample(Point const &point, bool doTrilinear) const {
     // 3.3: Sampling the actual data
-    double opacity = 0.005;
-    return {Color(1.0, 1.0, 1.0) * opacity, opacity}; // Use a pre-multiplied color.
+    double xPercent = (point.x-aa.x)/(bb.x-aa.x);
+    double yPercent = (point.y-aa.y)/(bb.y-aa.y);
+    double zPercent = (point.z-aa.z)/(bb.z-aa.z);
+
+    double density = data.densityAt(xPercent, yPercent, zPercent, doTrilinear);
+
+    return transferFunction(density);
 }
 
 /**
