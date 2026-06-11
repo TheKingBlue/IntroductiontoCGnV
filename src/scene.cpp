@@ -65,23 +65,50 @@ Color Scene::shadePixel(unsigned px, unsigned py, unsigned w, unsigned h) const 
 Color Scene::trace(Ray const &ray) const {
     optional<Hit> objectHit = intersectObjects(ray);
     vector<Segment> volumeHit = intersectVolumes(ray);
+    Color color(0.0, 0.0, 0.0);
+    double opacity = 0.0;
    
     // If both an abject and a volume were hit, only return the closest color
     if (objectHit && volumeHit.size() > 0){
+        // Object in front of the volume
         if (objectHit.value().t < volumeHit[0].t1)
             return shadeHit(objectHit.value(), ray).clamp();
 
-        if (objectHit.value().t > volumeHit[0].t1)
-            return shadeSegment(volumeHit[0], ray).first.clamp();
+        // Object behind the volume
+        if (objectHit.value().t > volumeHit[0].t1) {
+            for (long unsigned int i = 0; i < volumeHit.size(); i++) {
+                if (objectHit.value().t < volumeHit[i].t1) {
+                    color = shadeHit(objectHit.value(), ray);
+                    break;
+                } 
+                pair segment = shadeSegment(volumeHit[i], ray);
+                color += (1 - opacity) * segment.first;
+                opacity += (1 - opacity) * segment.second;
+
+                // Early ray termination
+                if (opacity > 0.99) break;
+            }
+            color += shadeHit(objectHit.value(), ray);
+            return color.clamp();
+        }
     }
 
-    // Only object was hit
+    // Only object(s) hit
     else if (objectHit)
         return shadeHit(objectHit.value(), ray).clamp();
 
-    // Only volume was hit
-    else if (volumeHit.size() > 0)
-        return shadeSegment(volumeHit[0], ray).first;
+    // Only volume(s) hit
+    else if (volumeHit.size() > 0) {
+            for (long unsigned int i = 0; i < volumeHit.size(); i++) {
+                pair segment = shadeSegment(volumeHit[i], ray);
+                color += (1 - opacity) * segment.first;
+                opacity += (1 - opacity) * segment.second;
+
+                // Early ray termination
+                if (opacity > 0.99) break;
+            }
+            return color.clamp();
+    }
 
     // Hit nothing
     return Color(0,0,0);
@@ -105,9 +132,9 @@ Color Scene::trace(Ray const &ray) const {
  */
 Color Scene::shadeHit(Hit const &min_hit, Ray const &ray) const {
     Material const &material = min_hit.object->material; // the hit object's material
-    [[maybe_unused]] Point hit = ray.at(min_hit.t);      // the hit point
-    [[maybe_unused]] Vector N = min_hit.N;               // the normal at the hit point
-    [[maybe_unused]] Vector V = -ray.D;                  // the view vector
+    Point hit = ray.at(min_hit.t);      // the hit point
+    Vector N = min_hit.N;               // the normal at the hit point
+    Vector V = -ray.D;                  // the view vector
 
     // 2.1: Ambient component
     Color ia = Color(1,1,1) * material.ka;
@@ -160,13 +187,25 @@ pair<Color, double> Scene::shadeSegment(Segment const &segment, Ray const &ray) 
     Color color(0.0, 0.0, 0.0);
     double opacity = 0.0;
     VolumePtr const &volume = segment.volume;
-    [[maybe_unused]] DensityField const &volumeData = volume->data;
-    [[maybe_unused]] double tStep = tStepFactor * volume->minVoxelSize;
+    double tStep = tStepFactor * volume->minVoxelSize;
+    DensityField const &volumeData = volume->data;
     [[maybe_unused]] Vector V = -ray.D;
 
     // 3.2: Compositing
-    opacity = 0.5;
-    color = Color(1.0, 1.0, 1.0) * opacity; // Use a pre-multiplied color.
+    double t;
+    int numSteps = segment.length() / tStep;
+    for (int i = 1; i < numSteps; i++) {
+        t = segment.t1 + (tStep*i);
+        Sample sample = volume->sample(ray.at(t), volumeTrilinear);
+        color += (1 - opacity) * sample.color;
+        opacity += (1 - opacity) * sample.opacity;
+
+        // Early ray termination
+        if (opacity > 0.99) break;
+    }
+
+    // Ambient coefficient
+    color *= volumeData.ka;
 
     // 3.4: Diffuse shading
 

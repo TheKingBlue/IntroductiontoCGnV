@@ -3,7 +3,7 @@
   "ImageHeight": 400,
   "Eye": [400, 300, 500],
   "LookAt": [0, 0, 0],
-  "VolumeTStep": 0.5,
+  "VolumeTStep": 0.1,
   "FieldOfView": 40,
   "Lights": [
     {
@@ -14,7 +14,7 @@
   "Objects": [
     {
       "type": "sphere",
-      "position": [0, 0, 0],
+      "position": [0, 0, -200],
       "radius": 100,
       "material":
       {
@@ -32,7 +32,7 @@
       "ka": 1.0,
       "kd": 1.0,
       "transfer_function": [
-        { "density": 0.00, "color": [0.0, 0.0, 0.0], "opacity": 0 }
+        { "density": 0.00, "color": [0.0, 0.0, 0.0], "opacity": 0.5 }
       ]
     }
   ]
