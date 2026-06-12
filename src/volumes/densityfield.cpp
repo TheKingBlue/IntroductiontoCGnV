@@ -2,6 +2,7 @@
 
 #include "../datraw/datraw.h" // IWYU pragma: keep
 
+#include <algorithm>
 #include <cmath>
 #include <filesystem>
 
@@ -48,14 +49,9 @@ double DensityField::index(unsigned x, unsigned y, unsigned z) const {
  */
 double DensityField::nearestNeighbor(double xPercent, double yPercent, double zPercent) const {
     // 3.3: Sampling the actual data
-    unsigned int x = round(xPercent * width);
-    unsigned int y = round(yPercent * height);
-    unsigned int z = round(zPercent * depth);
-
-    // Edge cases
-    if (x == width) x -= 1;
-    if (y == height) y -= 1;
-    if (z == depth) z -= 1;
+    unsigned int x = clamp(round(xPercent * width), 0.0, width-1.0);
+    unsigned int y = clamp(round(yPercent * height), 0.0, height-1.0);
+    unsigned int z = clamp(round(zPercent * depth), 0.0, depth-1.0);
     
     return index(x, y, z);;
 }
@@ -70,21 +66,16 @@ double DensityField::trilinear(double xPercent, double yPercent, double zPercent
     double y = yPercent * height;
     double z = zPercent * depth;
 
-    unsigned int xLow = floor(x);
-    unsigned int yLow = floor(y);
-    unsigned int zLow = floor(z);
-    unsigned int xHigh = ceil(x);
-    unsigned int yHigh = ceil(y);
-    unsigned int zHigh = ceil(z);
+    unsigned int xLow = clamp(floor(x), 0.0, width-1.0);
+    unsigned int yLow = clamp(floor(y), 0.0, height-1.0);
+    unsigned int zLow = clamp(floor(z), 0.0, depth-1.0);
+    unsigned int xHigh = clamp(ceil(x), 0.0, width-1.0);
+    unsigned int yHigh = clamp(ceil(y), 0.0, height-1.0);
+    unsigned int zHigh = clamp(ceil(z), 0.0, depth-1.0);
 
-    // Edge cases
-    if (xHigh == width) xHigh -= 2;
-    if (yHigh == height) yHigh -= 2;
-    if (zHigh == depth) zHigh -= 2;
-
-    double xD = (x - xLow)/(xHigh - xLow);
-    double yD = (y - yLow)/(yHigh - yLow);
-    double zD = (z - zLow)/(zHigh - zLow);
+    double xD = (x - xLow);
+    double yD = (y - yLow);
+    double zD = (z - zLow);
 
     double c000 = index(xLow,yLow,zLow);
     double c100 = index(xHigh,yLow,zLow);
