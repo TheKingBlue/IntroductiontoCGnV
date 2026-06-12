@@ -3,6 +3,7 @@
 #include "segment.h"
 
 #include <algorithm>
+#include <optional>
 #include <stdexcept>
 
 using namespace std;
@@ -92,5 +93,22 @@ Sample Volume::sample(Point const &point, bool doTrilinear) const {
  */
 Vector Volume::gradient(Point const &point, bool doTrilinear) const {
     // 3.4: Diffuse shading
-    return sample(point, doTrilinear).color;
+    double x = point.x;
+    double y = point.y;
+    double z = point.z;
+
+    double fx, fy, fz;
+
+    fx = ((sample(Point(x+minVoxelSize,y,z), doTrilinear).opacity -
+    sample(Point(x-minVoxelSize,y,z), doTrilinear).opacity) / 2*minVoxelSize);
+
+    fy = ((sample(Point(x,y+minVoxelSize,z), doTrilinear).opacity -
+    sample(Point(x,y-minVoxelSize,z), doTrilinear).opacity) / 2*minVoxelSize);
+
+    fz = ((sample(Point(x,y,z+minVoxelSize), doTrilinear).opacity -
+    sample(Point(x,y,z-minVoxelSize), doTrilinear).opacity) / 2*minVoxelSize);
+
+    Point f = Point(fx, fy, fz);
+
+    return f;
 }

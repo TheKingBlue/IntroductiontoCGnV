@@ -189,26 +189,41 @@ pair<Color, double> Scene::shadeSegment(Segment const &segment, Ray const &ray) 
     VolumePtr const &volume = segment.volume;
     double tStep = tStepFactor * volume->minVoxelSize;
     DensityField const &volumeData = volume->data;
-    [[maybe_unused]] Vector V = -ray.D;
+    Vector V = -ray.D;
 
     // 3.2: Compositing
     double t;
     int numSteps = segment.length() / tStep;
     for (int i = 1; i < numSteps; i++) {
         t = segment.t1 + (tStep*i);
-        Sample sample = volume->sample(ray.at(t), volumeTrilinear);
-        color += (1 - opacity) * sample.color;
+        Point tPos = ray.at(t);
+        Sample sample = volume->sample(tPos, volumeTrilinear);
+
+        // 3.4: Diffuse shading
+        if (sample.opacity > 1e-6) {
+            Color gradient = volume->gradient(tPos, volumeTrilinear);
+            Color ia = Color(1,1,1) * volumeData.ka;
+            Color id = Color(0, 0, 0);
+
+            if (gradient.length() > epsilon) {
+                // Normal calculation
+                Vector N = gradient.normalized();
+                if (N.dot(V) < 0) N *= -1;
+
+                for (long unsigned int j = 0; j < lights.size(); j++) {
+                    Light light = lights[j];
+                    Vector L = (light.position - tPos).normalized();
+
+                    id += light.color * volumeData.kd * max(0.0,N.dot(L));
+                }
+            }
+            color += (1 - opacity) * (ia + id) * sample.color; 
+        }
         opacity += (1 - opacity) * sample.opacity;
 
         // Early ray termination
         if (opacity > 0.99) break;
     }
-
-    // Ambient coefficient
-    color *= volumeData.ka;
-
-    // 3.4: Diffuse shading
-
     // 3.5: Shadows
 
     return {color, opacity};
