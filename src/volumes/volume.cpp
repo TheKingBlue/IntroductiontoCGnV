@@ -100,13 +100,13 @@ Vector Volume::gradient(Point const &point, bool doTrilinear) const {
     double fx, fy, fz;
 
     fx = ((sample(Point(x+minVoxelSize,y,z), doTrilinear).opacity -
-    sample(Point(x-minVoxelSize,y,z), doTrilinear).opacity) / 2*minVoxelSize);
+    sample(Point(x-minVoxelSize,y,z), doTrilinear).opacity) / (2*minVoxelSize));
 
     fy = ((sample(Point(x,y+minVoxelSize,z), doTrilinear).opacity -
-    sample(Point(x,y-minVoxelSize,z), doTrilinear).opacity) / 2*minVoxelSize);
+    sample(Point(x,y-minVoxelSize,z), doTrilinear).opacity) / (2*minVoxelSize));
 
     fz = ((sample(Point(x,y,z+minVoxelSize), doTrilinear).opacity -
-    sample(Point(x,y,z-minVoxelSize), doTrilinear).opacity) / 2*minVoxelSize);
+    sample(Point(x,y,z-minVoxelSize), doTrilinear).opacity) / (2*minVoxelSize));
 
     Point f = Point(fx, fy, fz);
 
