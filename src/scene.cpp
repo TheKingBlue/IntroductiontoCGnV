@@ -193,8 +193,8 @@ pair<Color, double> Scene::shadeSegment(Segment const &segment, Ray const &ray) 
 
     // 3.2: Compositing
     double t;
-    int numSteps = segment.length() / tStep;
-    for (int i = 1; i < numSteps; i++) {
+    double numSteps = segment.length() / tStep;
+    for (int i = 0; i < numSteps; i++) {
         t = segment.t1 + (tStep*i);
         Point tPos = ray.at(t);
         Sample sample = volume->sample(tPos, volumeTrilinear);
