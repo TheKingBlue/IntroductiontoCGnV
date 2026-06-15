@@ -72,7 +72,7 @@ Color Scene::trace(Ray const &ray) const {
     if (objectHit && volumeHit.size() > 0){
         // Object in front of the volume
         if (objectHit.value().t < volumeHit[0].t1)
-            return shadeHit(objectHit.value(), ray).clamp();
+            return shadeHit(objectHit.value(), ray).clamp()  * (1 - opacity);
 
         // Object behind the volume
         if (objectHit.value().t > volumeHit[0].t1) {
@@ -88,14 +88,14 @@ Color Scene::trace(Ray const &ray) const {
                 // Early ray termination
                 if (opacity > 0.99) break;
             }
-            color += shadeHit(objectHit.value(), ray);
+            color += shadeHit(objectHit.value(), ray) * (1 - opacity);
             return color.clamp();
         }
     }
 
     // Only object(s) hit
     else if (objectHit)
-        return shadeHit(objectHit.value(), ray).clamp();
+        return shadeHit(objectHit.value(), ray).clamp()  * (1 - opacity);
 
     // Only volume(s) hit
     else if (volumeHit.size() > 0) {
@@ -212,9 +212,21 @@ pair<Color, double> Scene::shadeSegment(Segment const &segment, Ray const &ray) 
 
                 for (long unsigned int j = 0; j < lights.size(); j++) {
                     Light light = lights[j];
-                    Vector L = (light.position - tPos).normalized();
+                    Vector L = (light.position - tPos);
 
-                    id += light.color * volumeData.kd * max(0.0,N.dot(L));
+                    // 3.5: Shadows
+                    if (renderShadows) {
+                        // Avoid shadow acne
+                        tPos += epsilon*N;
+
+                        Ray shadowRay = Ray(tPos, L.normalized());
+                        id += light.color * volumeData.kd * max(0.0,N.dot(L.normalized())) *
+                                (1 - traceShadowOcclusion(shadowRay, L.length()));
+                    }
+
+                    // Without considering shadows
+                    else
+                        id += light.color * volumeData.kd * max(0.0,N.dot(L.normalized()));
                 }
             }
             color += (1 - opacity) * (ia + id) * sample.color; 
@@ -224,7 +236,6 @@ pair<Color, double> Scene::shadeSegment(Segment const &segment, Ray const &ray) 
         // Early ray termination
         if (opacity > 0.99) break;
     }
-    // 3.5: Shadows
 
     return {color, opacity};
 }
@@ -235,7 +246,47 @@ pair<Color, double> Scene::shadeSegment(Segment const &segment, Ray const &ray) 
  */
 double Scene::traceShadowOcclusion(Ray const &shadowRay, double distanceToLight) const {
     // 3.5: Shadows
-    return 0.4;
+    optional<Hit> objectHit = intersectObjects(shadowRay);
+    vector<Segment> volumeHit = intersectVolumes(shadowRay);
+    double opacity = 0.0;
+
+    // Only object(s) hit
+    if (objectHit)
+        return 1.0;
+
+    // Only volume(s) hit
+    if (volumeHit.size() > 0) {
+            for (long unsigned int i = 0; i < volumeHit.size(); i++) {
+                // Early ray termination
+                if (opacity > 0.99 || distanceToLight < volumeHit[i].t1) break;
+
+                opacity += shadeSegmentOpacity(volumeHit[i], shadowRay);
+            }
+            return opacity;
+    }
+
+    // If both an abject and a volume were hit
+    if (objectHit && volumeHit.size() > 0){
+        // Object in front of the volume
+        if (objectHit.value().t < volumeHit[0].t1)
+            return 1.0;
+
+        // Object behind the volume
+        if (objectHit.value().t > volumeHit[0].t1) {
+            for (long unsigned int i = 0; i < volumeHit.size(); i++) {
+                // Early ray termination
+                if (opacity > 0.99 || distanceToLight < volumeHit[i].t1) {
+                    break;
+                } 
+
+                opacity += shadeSegmentOpacity(volumeHit[i], shadowRay);
+            }
+            return opacity;
+        }
+    }
+
+    // Hit nothing
+    return 0.0;
 }
 
 /**
@@ -246,10 +297,21 @@ double Scene::traceShadowOcclusion(Ray const &shadowRay, double distanceToLight)
  */
 double Scene::shadeSegmentOpacity(Segment const &shadowSegment, Ray const &shadowRay) const {
     double opacity = 0.0;
-    [[maybe_unused]] double tStep = tStepFactor * shadowSegment.volume->minVoxelSize;
+    VolumePtr const &volume = shadowSegment.volume;
+    double tStep = tStepFactor * volume->minVoxelSize;
 
-    // 3.5: Shadows
-    opacity = 0.4;
+    double t;
+    double numSteps = shadowSegment.length() / tStep;
+    for (int i = 0; i < numSteps; i++) {
+        t = shadowSegment.t1 + (tStep*i);
+        Point tPos = shadowRay.at(t);
+        Sample sample = volume->sample(tPos, volumeTrilinear);
+
+        opacity += (1 - opacity) * sample.opacity;
+
+        // Early ray termination
+        if (opacity > 0.99) break;
+    }
 
     return opacity;
 }
