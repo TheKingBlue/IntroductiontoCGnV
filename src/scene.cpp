@@ -68,7 +68,7 @@ Color Scene::trace(Ray const &ray) const {
     Color color(0.0, 0.0, 0.0);
     double opacity = 0.0;
    
-    // If both an abject and a volume were hit, only return the closest color
+    // If both an abject and a volume were hit
     if (objectHit && volumeHit.size() > 0){
         // Object in front of the volume
         if (objectHit.value().t < volumeHit[0].t1)
@@ -78,7 +78,7 @@ Color Scene::trace(Ray const &ray) const {
         if (objectHit.value().t > volumeHit[0].t1) {
             for (long unsigned int i = 0; i < volumeHit.size(); i++) {
                 if (objectHit.value().t < volumeHit[i].t1) {
-                    color = shadeHit(objectHit.value(), ray);
+                    color += shadeHit(objectHit.value(), ray);
                     break;
                 } 
                 pair segment = shadeSegment(volumeHit[i], ray);
