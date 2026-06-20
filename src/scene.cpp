@@ -141,6 +141,7 @@ Color Scene::shadeHit(Hit const &min_hit, Ray const &ray) const {
 
     // 2.2.1: Normal calculation
     [[maybe_unused]] Color normalMap = (N+1)/2;
+    // Ensure normal is directed towards the camera
     if (N.dot(V) < 0) N *= -1;
 
     // 2.2.2: Diffuse component
@@ -206,6 +207,7 @@ pair<Color, double> Scene::shadeSegment(Segment const &segment, Ray const &ray) 
             if (gradient.length() > epsilon) {
                 // Normal calculation
                 Vector N = gradient.normalized();
+                // Ensure normal is directed towards the camera
                 if (N.dot(V) < 0) N *= -1;
 
                 for (long unsigned int j = 0; j < lights.size(); j++) {

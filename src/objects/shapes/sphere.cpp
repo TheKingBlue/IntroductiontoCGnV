@@ -31,10 +31,10 @@ optional<Hit> Sphere::intersect(Ray const &ray) {
     if (tState == false) return nullopt;
 
     double t ;
-    // Ray travels behind the origin towards the object
+    // Ray travels behind the origin towards the object: Object is behind the origin
     if (t0 <= 0 && t1 <= 0)
         return nullopt;
-    // One negative t solution means we are in the sphere
+    // One negative t solution means we are inside the sphere
     else if (t0 <= 0 || t1 <= 0)
         t = t0 > 0 ? t0 : t1;
     else
